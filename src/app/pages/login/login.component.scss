@@ -1,0 +1,130 @@
+.main-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("../../../../public/home/home_backgroud.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 30px 40px;
+  position: relative;
+}
+
+.login-body {
+  width: 450px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px 60px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.login-form {
+  margin: 30px 0 50px;
+}
+
+.form-control {
+  position: relative;
+  margin: 15px 0;
+}
+
+.form-control input {
+  width: 100%;
+  background-color: #333;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 20px;
+}
+
+.form-control input:is(:focus, :valid) {
+  background-color: #444;
+  padding: 20px 20px 10px;
+}
+
+.form-control label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  color: #8c8c8c;
+  transition: all 0.1s ease;
+}
+
+.form-control input:is(:focus, :valid) ~ label {
+  font-size: 12px;
+  transform: translateY(-130%);
+  margin-top: 2px 0 20px;
+}
+
+.login-body .login-form button {
+  width: 100%;
+  background-color: #e50914;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  padding: 16px 0;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+
+.login-form button:hover {
+  background-color: #c40812;
+}
+
+.login-body a {
+  text-decoration: none;
+}
+
+.login-body a:hover {
+  text-decoration: underline;
+}
+
+.login-body :where(label, p, a) {
+  color: #b3b3b3;
+}
+
+.login-form .form-help {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-form .remember-me {
+  display: flex;
+}
+
+.login-form .remember-me input {
+  margin-right: 5px;
+  accent-color: #b3b3b3;
+}
+
+.login-form .form-help :where(label, a) {
+  font-size: 14px;
+}
+
+.login-body .sign-up a {
+  color: #fff;
+}
+
+.login-body .short-desc {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-body .short-desc a {
+  color: #0071eb;
+}

@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div class="login-body">
+    <h2 class="title">Sign In</h2>
+    <form action="#" class="login-form">
+      <div class="form-control">
+        <input type="text" required />
+        <label for="email_phone">Email or Phone Number</label>
+      </div>
+      <div class="form-control">
+        <input type="password" required />
+        <label for="password">Password</label>
+      </div>
+      <button type="submit">Sign In</button>
+      <div class="form-help">
+        <div class="remember-me">
+          <input type="checkbox" id="remember-me" />
+          <label for="remember-me">Remember Me</label>
+        </div>
+        <a href="#">Need Help?</a>
+      </div>
+    </form>
+    <p class="sign-up">
+      New to Netflix? <a [routerLink]="['/register']">Sign Up Now</a>
+    </p>
+    <p class="short-desc">
+      This page is protected by Google reCAPTCHA to ensure you're not a bot.
+      <a href="#">Learn more.</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<main>
+  <app-landing-page></app-landing-page>
+
+  <div class="separation"></div>
+
+  <app-one-three-row
+    [titleText]="'Enjoy on your TV'"
+    [descriptionText]="
+      'Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and mores.'
+    "
+    [imgSrc]="tvImg"
+    [vidSrc]="tvVid"
+  ></app-one-three-row>
+
+  <div class="separation"></div>
+
+  <app-second-fourth-row
+    [titleText]="'Download your shows to watch offline'"
+    [descriptionText]="
+      'Save your favourites easily and always have something to watch.'
+    "
+    [imgSrc]="mbImg"
+    [args]="'download'"
+  ></app-second-fourth-row>
+
+  <div class="separation"></div>
+
+  <app-one-three-row
+    [titleText]="'Watch everywhere'"
+    [descriptionText]="
+      'Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.'
+    "
+    [imgSrc]="devicePileImg"
+    [vidSrc]="deviceVid"
+    [args]="'device-class'"
+  ></app-one-three-row>
+
+  <div class="separation"></div>
+
+  <app-second-fourth-row
+    [titleText]="'Create profiles for kids'"
+    [descriptionText]="
+      'Send children on adventures with their favourite characters in a space made just for them—free with your membership.'
+    "
+    [imgSrc]="kidsImg"
+  ></app-second-fourth-row>
+
+  <div class="separation"></div>
+
+  <app-faq></app-faq>
+
+  <app-reg-email style="padding: 30px"></app-reg-email>
+
+  <div class="separation"></div>
+
+  <app-main-footer></app-main-footer>
+</main>

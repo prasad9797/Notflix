@@ -1,0 +1,47 @@
+.row {
+  display: flex;
+  justify-content: center;
+  max-width: 70vw;
+  margin: auto;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-sec {
+  display: flex;
+  flex-direction: column;
+  padding: 45px 0;
+  margin: 90px 0;
+}
+
+.text-sec .title {
+  font-size: 48px;
+  font-weight: bolder;
+}
+
+.text-sec .description {
+  font-size: 24px;
+}
+
+.media-sec {
+  position: relative;
+}
+
+.media-sec img {
+  position: relative;
+  z-index: 10;
+}
+
+.media-sec video {
+  position: absolute;
+  top: 51px;
+  right: 0;
+  width: 555px;
+}
+
+.device-class {
+  max-width: 63% !important;
+  top: 30px !important;
+  right: 86px !important;
+}

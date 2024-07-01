@@ -1,0 +1,20 @@
+<section class="row">
+  <div class="media-sec">
+    <img [src]="imgSrc" alt="" />
+    @if(args!==''){
+    <div class="download_box">
+      <img src="/home/boxshot_stranger_things.png" alt="" class="boxshotImg" />
+      <div class="text_holder">
+        <span style="padding-top: 10px">Stranger Things</span>
+        <span class="dowloading">Downloading...</span>
+      </div>
+      <img src="/home/download-icon.gif" alt="" class="download_icon" />
+    </div>
+    }
+  </div>
+
+  <div class="text-sec">
+    <span class="title">{{ titleText }}</span>
+    <span class="description">{{ descriptionText }}</span>
+  </div>
+</section>
