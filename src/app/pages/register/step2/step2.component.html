@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="registration-form">
+    <h4 class="step">STEP 2 OF 3</h4>
+    <h1>Create a Username & Add your Tmdb APi_Key</h1>
+    <p class="subtitle">Just a few more steps and you're done!</p>
+    <p class="subtitle">We hate paperwork, too.</p>
+
+    <form [formGroup]="usernameForm">
+      <div class="input-group">
+        <input type="text" id="username" formControlName="username" required />
+        <label for="username">Username</label>
+        <div
+          *ngIf="
+            (usernameForm.get('username')?.invalid &&
+              usernameForm.get('username')?.dirty) ||
+            usernameForm.get('username')?.touched
+          "
+        >
+          <span
+            class="error"
+            *ngIf="usernameForm.get('username')?.errors?.['required']"
+            >Username is required</span
+          >
+          <span
+            class="error"
+            *ngIf="usernameForm.get('username')?.errors?.['minlength']"
+            >Username must be at least 4 characters long</span
+          >
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="text" id="tmdbKey" formControlName="tmdbKey" required />
+        <label for="tmdbKey">Add a TMDB key</label>
+        <div
+          *ngIf="
+            (usernameForm.get('tmdbKey')?.invalid &&
+              usernameForm.get('tmdbKey')?.dirty) ||
+            usernameForm.get('tmdbKey')?.touched
+          "
+        >
+          <span
+            class="error"
+            *ngIf="usernameForm.get('tmdbKey')?.errors?.['required']"
+            >TMDB key is required</span
+          >
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="next-button"
+        [disabled]="usernameForm.invalid"
+        [routerLink]="['/register/step3']"
+      >
+        Next
+      </button>
+    </form>
+  </div>
+</div>

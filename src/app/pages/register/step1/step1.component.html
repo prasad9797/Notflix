@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="registration-form">
+    <h4 class="step">STEP 1 OF 3</h4>
+    <h1>Create a password to start your membership</h1>
+    <p class="subtitle">Just a few more steps and you're done!</p>
+    <p class="subtitle">We hate paperwork, too.</p>
+
+    <form [formGroup]="registerEmail" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input type="email" id="email" formControlName="email" required />
+        <label for="email">Email</label>
+        <div
+          *ngIf="
+            registerEmail.get('email')?.invalid &&
+            (registerEmail.get('email')?.dirty ||
+              registerEmail.get('email')?.touched)
+          "
+        >
+          <small
+            class="error"
+            *ngIf="registerEmail.get('email')?.errors?.['required']"
+            >Email is required</small
+          >
+          <small
+            class="error"
+            *ngIf="registerEmail.get('email')?.errors?.['email']"
+            >Please enter a valid email</small
+          >
+        </div>
+      </div>
+      <div class="input-group">
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          required
+        />
+        <label for="password">Add a password</label>
+        <div
+          *ngIf="
+            registerEmail.get('password')?.invalid &&
+            (registerEmail.get('password')?.dirty ||
+              registerEmail.get('password')?.touched)
+          "
+        >
+          <small
+            class="error"
+            *ngIf="registerEmail.get('password')?.errors?.['required']"
+            >Password is required</small
+          >
+          <small
+            class="error"
+            *ngIf="registerEmail.get('password')?.errors?.['minlength']"
+            >Password must be at least 8 characters long</small
+          >
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="next-button"
+        [disabled]="registerEmail.invalid"
+        [routerLink]="['/register/step2']"
+      >
+        Next
+      </button>
+    </form>
+  </div>
+</div>

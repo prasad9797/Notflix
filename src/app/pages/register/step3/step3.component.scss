@@ -1,0 +1,117 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+main {
+  background-color: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.features {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.features li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  position: relative;
+}
+
+.features li::before {
+  content: "✓";
+  color: #e50914;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.plan-table th,
+.plan-table td {
+  text-align: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.plan-table th:first-child,
+.plan-table td:first-child {
+  text-align: left;
+  width: 40%;
+}
+
+.plan-cell {
+  width: 20%;
+  padding-top: 0px;
+}
+
+.plan-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  background-color: #cc878b;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  color: white;
+}
+
+.plan-button.selected {
+  background-color: #e50914;
+}
+
+.check {
+  color: #e50914;
+}
+
+.next-button {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.next-button:hover {
+  background-color: #f6121d;
+}
+
+@media (max-width: 768px) {
+  .plan-table th:first-child,
+  .plan-table td:first-child {
+    width: 30%;
+  }
+
+  .plan-cell {
+    width: 23.33%;
+  }
+}

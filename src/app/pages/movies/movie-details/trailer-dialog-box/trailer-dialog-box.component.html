@@ -1,0 +1,31 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2 class="dialog-title">Trailer</h2>
+    <button class="close-button" mat-dialog-close (click)="closeDialog()">
+      &times;
+    </button>
+  </div>
+  <div class="youtube-player-container">
+    <iframe
+      [src]="'https://www.youtube.com/embed/' + tralierId | safeUrl"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="navigation-buttons">
+    <button
+      class="nav-button"
+      (click)="previousTrailer()"
+      [disabled]="currentTrailerIndex === 0"
+    >
+      Previous
+    </button>
+    <button
+      class="nav-button"
+      (click)="nextTrailer()"
+      [disabled]="currentTrailerIndex === data.trailers.length - 1"
+    >
+      Next
+    </button>
+  </div>
+</div>

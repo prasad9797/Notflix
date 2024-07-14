@@ -1,0 +1,19 @@
+<div class="main-container" [ngStyle]="{ 'background-color': 'black' }">
+  <app-main-header></app-main-header>
+  <div class="movieListContainer">
+    <cdk-virtual-scroll-viewport
+      id="virtualViewPort"
+      #virtualViewPort
+      itemSize="20"
+    >
+      <app-movie-item
+        *cdkVirtualFor="let movie of movieList"
+        class="movieItem"
+        [movieDetails]="movie"
+      ></app-movie-item>
+    </cdk-virtual-scroll-viewport>
+    <!-- @for (movie of movieList; track $index) {
+    <app-movie-item class="movieItem" [movieDetails]="movie"></app-movie-item>
+    } -->
+  </div>
+</div>

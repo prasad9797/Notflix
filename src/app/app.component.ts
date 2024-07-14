@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   imports: [RouterModule, RouterOutlet, HomeComponent],
+  providers: [],
 })
 export class AppComponent {
   title = 'Notflix';

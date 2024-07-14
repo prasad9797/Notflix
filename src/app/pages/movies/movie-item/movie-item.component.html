@@ -1,0 +1,39 @@
+<div
+  class="movie-card"
+  [ngStyle]="{
+    background:
+      'radial-gradient(
+  circle,
+  rgba(0, 0, 0, 0.7) 30%,
+  rgba(0, 0, 0, 0.8) 60%,
+  rgba(0, 0, 0, 1) 100%
+),
+    url(' +
+      getPosterURL() +
+      ') no-repeat center / 100% 100%'
+  }"
+>
+  <div class="poster-container">
+    <img
+      [src]="getPosterURL()"
+      [alt]="movieDetails.title + ' poster'"
+      class="movie-poster"
+    />
+  </div>
+  <div class="movie-info">
+    <h3 class="movie-title">{{ movieDetails.title | reduceString : 20 }}</h3>
+    <div class="movie-metadata">
+      <span class="year">{{ movieDetails.release_date | date : "yyyy" }}</span>
+      <span class="language">{{
+        movieDetails.original_language | uppercase
+      }}</span>
+      <span class="rating">{{ movieDetails.vote_average.toFixed(1) }}</span>
+    </div>
+    <p class="movie-description">
+      {{ movieDetails.overview | reduceString : 100 }}
+    </p>
+    <button class="more-details" (click)="showMoreDetails()">
+      More Details
+    </button>
+  </div>
+</div>

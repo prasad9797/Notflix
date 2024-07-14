@@ -1,0 +1,56 @@
+<div class="movie-detail" *ngIf="movieInfo as movie">
+  <div
+    class="backdrop"
+    [style.backgroundImage]="
+      'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'
+    "
+  >
+    <div class="overlay">
+      <div class="content">
+        <div class="left-content">
+          <h1>{{ movie.title }}</h1>
+          <div class="metadata">
+            <span class="rating"
+              >★ {{ movie.vote_average.toFixed(1) }} |
+              {{ movie.vote_count }}</span
+            >
+            <span class="runtime">{{ movie.runtime }} mins</span>
+            <span class="genres">{{ get_Genre().join(", ") }}</span>
+            <span class="year">{{ movie.release_date | date : "yyyy" }}</span>
+          </div>
+          <p class="overview">{{ movie.overview }}</p>
+          <div class="buttons">
+            <button class="play-btn">▶ PLAY NOW</button>
+            <button class="trailer-btn" (click)="openTrailerDialog()">
+              TRAILER
+            </button>
+          </div>
+        </div>
+        <div class="right-content">
+          <div class="posters">
+            <h3>Poster</h3>
+            <div class="poster-images">
+              <img [src]="getPosterURL()" alt="Movie poster" />
+            </div>
+          </div>
+          <div class="actors">
+            <h3>Actors</h3>
+            <div class="actor-list">
+              <div class="actor">
+                <img [src]="getPosterURL()" />
+                <span>Actor Name</span>
+              </div>
+              <!-- <div class="actor" *ngFor="let actor of actors">
+              <img
+                [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path"
+                [alt]="actor.name"
+              />
+              <span>{{ actor.name }}</span>
+            </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
