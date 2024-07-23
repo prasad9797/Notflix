@@ -10,6 +10,7 @@
         *cdkVirtualFor="let movie of movieList"
         class="movieItem"
         [movieDetails]="movie"
+        (scrollPosition)="saveScrollPosition()"
       ></app-movie-item>
     </cdk-virtual-scroll-viewport>
     <!-- @for (movie of movieList; track $index) {

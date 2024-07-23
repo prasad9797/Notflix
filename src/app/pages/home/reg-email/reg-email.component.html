@@ -1,6 +1,12 @@
 <div class="register-email">
-  <input type="text" placeholder="Email Address" />
-  <button class="btn btn-red" [routerLink]="['/register']">
-    Get Started &gt;
-  </button>
+  <form [formGroup]="registerEmail">
+    <input type="text" formControlName="email" placeholder="Email Address" />
+    <button
+      class="btn btn-red"
+      [disabled]="registerEmail.valid"
+      (click)="onSubmit()"
+    >
+      Get Started &gt;
+    </button>
+  </form>
 </div>

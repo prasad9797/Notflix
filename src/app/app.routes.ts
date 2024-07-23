@@ -1,12 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { MoviesComponent } from './pages/movies/movies.component';
-import { Step1Component } from './pages/register/step1/step1.component';
-import { Step3Component } from './pages/register/step3/step3.component';
-import { Step2Component } from './pages/register/step2/step2.component';
-import { MovieDetailsComponent } from './pages/movies/movie-details/movie-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,28 +9,18 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'register',
-    component: RegisterComponent,
-  },
-  {
-    path: 'register/step1',
-    component: Step1Component,
-  },
-  {
-    path: 'register/step2',
-    component: Step2Component,
-  },
-  {
-    path: 'register/step3',
-    component: Step3Component,
+    loadChildren: () =>
+      import('./pages/register/register.routes').then((m) => m.REGISTER_ROUTES),
   },
   {
     path: 'movies',
-    component: MoviesComponent,
-    data: { reuseRoute: true },
+    loadChildren: () =>
+      import('./pages/movies/movies.routes').then((m) => m.MOVIES_ROUTES),
+    data: { preload: true, delay: 1000 },
   },
-  { path: 'movie/:id', component: MovieDetailsComponent },
 ];

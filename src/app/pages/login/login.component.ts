@@ -9,7 +9,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -28,11 +31,15 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      emailPhone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       rememberMe: [false],
     });
@@ -40,7 +47,17 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      const { email, password } = this.loginForm.value;
+
+      this.authService.login(email, password).subscribe(
+        (next) => {
+          console.log('Login in Successful');
+          this.router.navigate(['/movies']);
+        },
+        (error) => {
+          console.log('Login Error', error);
+        }
+      );
     }
   }
 }

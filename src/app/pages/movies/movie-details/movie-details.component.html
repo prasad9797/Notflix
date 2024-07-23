@@ -1,9 +1,7 @@
 <div class="movie-detail" *ngIf="movieInfo as movie">
   <div
     class="backdrop"
-    [style.backgroundImage]="
-      'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'
-    "
+    [style.backgroundImage]="'url(' + backdrop[0].file_path + ')'"
   >
     <div class="overlay">
       <div class="content">
@@ -30,23 +28,20 @@
           <div class="posters">
             <h3>Poster</h3>
             <div class="poster-images">
-              <img [src]="getPosterURL()" alt="Movie poster" />
+              <img
+                *ngFor="let poster of posters.slice(0, 5)"
+                [src]="poster.file_path"
+                alt="Movie poster"
+              />
             </div>
           </div>
           <div class="actors">
             <h3>Actors</h3>
             <div class="actor-list">
-              <div class="actor">
-                <img [src]="getPosterURL()" />
-                <span>Actor Name</span>
+              <div class="actor" *ngFor="let actor of actors">
+                <img [src]="actor.profile_path" [alt]="actor.name" />
+                <span>{{ actor.name }}</span>
               </div>
-              <!-- <div class="actor" *ngFor="let actor of actors">
-              <img
-                [src]="'https://image.tmdb.org/t/p/w200' + actor.profile_path"
-                [alt]="actor.name"
-              />
-              <span>{{ actor.name }}</span>
-            </div> -->
             </div>
           </div>
         </div>

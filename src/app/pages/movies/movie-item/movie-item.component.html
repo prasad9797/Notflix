@@ -32,8 +32,12 @@
     <p class="movie-description">
       {{ movieDetails.overview | reduceString : 100 }}
     </p>
-    <button class="more-details" (click)="showMoreDetails()">
-      More Details
+    <button
+      class="more-details"
+      [disabled]="loading"
+      (click)="showMoreDetails()"
+    >
+      {{ loading ? "Loading..." : "More Details" }}
     </button>
   </div>
 </div>

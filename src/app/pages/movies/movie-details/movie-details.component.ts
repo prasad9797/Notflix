@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from '../../../shared/services/movie.service';
 import { CommonModule, Location } from '@angular/common';
-import { MovieDetails } from '../../../shared/interfaces/movie-details.interface';
+import { MovieDetails } from '../../../shared/interfaces/movie.details.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { TrailerDialogBoxComponent } from './trailer-dialog-box/trailer-dialog-box.component';
-import { MovieTrailer } from '../../../shared/interfaces/movie-trailer';
+import { MovieTrailer } from '../../../shared/interfaces/movie.trailer.interface';
+import { MovieCredits } from '../../../shared/interfaces/movie.credits.interface';
+import { MovieImages } from '../../../shared/interfaces/movie.images.interface';
 
 @Component({
   selector: 'app-movie-details',
@@ -17,40 +18,40 @@ import { MovieTrailer } from '../../../shared/interfaces/movie-trailer';
 export class MovieDetailsComponent {
   movieInfo!: MovieDetails;
   movieVideos!: MovieTrailer;
+  movieCredits!: MovieCredits;
+  movieImages!: MovieImages;
   trailerIds: string[] = [];
-
-  private readonly moviePosterURL = 'https://image.tmdb.org/t/p/w200';
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService,
     public dialog: MatDialog,
     private location: Location
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.movieService
-        .getMovieById(+id)
-        .subscribe((movieDetails: MovieDetails) => {
-          this.movieInfo = movieDetails;
-        });
-      this.movieService
-        .getMovieTrailer(+id)
-        .subscribe((movieTrailer: MovieTrailer) => {
-          this.movieVideos = movieTrailer;
-          this.parseMovieTrailers();
-        });
-    }
+    this.route.data.subscribe((data) => {
+      this.movieInfo = data['movieData'].details;
+      this.movieVideos = data['movieData'].trailer;
+      this.movieCredits = data['movieData'].credits;
+      this.movieImages = data['movieData'].images;
+      this.parseMovieTrailers();
+    });
   }
 
   get_Genre() {
     return this.movieInfo.genres.map((genre) => genre.name);
   }
 
-  getPosterURL() {
-    return this.moviePosterURL + this.movieInfo.poster_path;
+  get backdrop() {
+    return this.movieImages?.backdrops || [];
+  }
+
+  get posters() {
+    return this.movieImages?.posters || [];
+  }
+
+  get actors() {
+    return this.movieCredits?.cast.slice(0, 5) || [];
   }
 
   parseMovieTrailers() {

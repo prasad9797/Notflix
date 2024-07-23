@@ -1,4 +1,5 @@
 <div class="container">
+  <app-main-header></app-main-header>
   <main>
     <p class="step">STEP 3 OF 3</p>
     <h1>Choose the plan that's right for you</h1>
@@ -51,6 +52,6 @@
       </tbody>
     </table>
 
-    <button class="next-button" [routerLink]="['/movies']">Next</button>
+    <button class="next-button" (click)="register()">Next</button>
   </main>
 </div>

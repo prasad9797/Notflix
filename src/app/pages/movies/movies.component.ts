@@ -2,7 +2,6 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
-  Renderer2,
   ViewChild,
   inject,
 } from '@angular/core';
@@ -38,6 +37,7 @@ export class MoviesComponent implements OnInit {
   loading = false;
   error: string | null = null;
   isInitailized: boolean = false;
+  private lastScrollPosition: number = 0;
 
   private subscriptions: Subscription = new Subscription();
 
@@ -46,21 +46,35 @@ export class MoviesComponent implements OnInit {
       this.initialize();
     }
 
-    this.subscriptions.add(
-      this.router.events
-        .pipe(filter((event) => event instanceof NavigationEnd))
-        .subscribe(() => {
-          if (this.isInitailized) {
-            this.cdr.detectChanges();
-          }
-        })
-    );
+    // this.subscriptions.add(
+    //   this.router.events
+    //     .pipe(filter((event) => event instanceof NavigationEnd))
+    //     .subscribe(() => {
+    //       console.log('am i getting called ????');
+    //       if (this.isInitailized) {
+    //         const savedScrollPoisiton = localStorage.getItem(
+    //           'MoviesScrollPosition'
+    //         );
+    //         console.log(savedScrollPoisiton);
+    //         if (savedScrollPoisiton) {
+    //           this.lastScrollPosition = parseInt(savedScrollPoisiton, 10);
+    //           console.log(this.lastScrollPosition);
+    //           setTimeout(() => {
+    //             this.infScrollContainer.scrollToOffset(this.lastScrollPosition);
+    //             localStorage.removeItem('MoviesScrollPosition');
+    //           });
+    //         }
+    //         this.cdr.detectChanges();
+    //       }
+    //     })
+    // );
   }
 
   private initialize(): void {
     this.subscriptions.add(
       this.movieService.movies$.subscribe((movies) => {
         this.movieList = movies;
+
         this.cdr.detectChanges();
       })
     );
@@ -87,7 +101,30 @@ export class MoviesComponent implements OnInit {
   ngAfterViewInit() {
     this.infScrollContainer.scrolledIndexChange.subscribe(() => {
       this.loadMoreMovies();
+      this.lastScrollPosition = this.infScrollContainer.measureScrollOffset();
     });
+
+    const savedScrollPoisiton = localStorage.getItem('MoviesScrollPosition');
+    //console.log(savedScrollPoisiton);
+    if (savedScrollPoisiton) {
+      const scrollPosition = parseInt(savedScrollPoisiton, 10);
+      console.log(this.lastScrollPosition);
+      // setTimeout(() => {
+      //   this.infScrollContainer.scrollToOffset(this.lastScrollPosition);
+      //   localStorage.removeItem('MoviesScrollPosition');
+      // });
+
+      requestAnimationFrame(() => {
+        this.infScrollContainer.scrollToIndex(scrollPosition / 20);
+      });
+      localStorage.removeItem('MoviesScrollPosition');
+    }
+
+    // if (this.lastScrollPosition > 0) {
+    //   setTimeout(() => {
+    //     this.infScrollContainer.scrollToOffset(this.lastScrollPosition);
+    //   });
+    // }
   }
 
   loadMoreMovies() {
@@ -97,6 +134,14 @@ export class MoviesComponent implements OnInit {
     if (end === total && !this.loading) {
       this.movieService.getMovies();
     }
+  }
+
+  saveScrollPosition() {
+    this.lastScrollPosition = this.infScrollContainer.measureScrollOffset();
+    localStorage.setItem(
+      'MoviesScrollPosition',
+      this.lastScrollPosition.toString()
+    );
   }
 
   ngOnDestroy() {

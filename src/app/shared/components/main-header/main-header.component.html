@@ -1,6 +1,12 @@
 <nav>
   <img [src]="imgSrc" alt="netflix Logo" [routerLink]="['']" />
+  @if(isLoggedIn===null || isLoggedIn == false){
   <div>
     <button class="btn btn-red-sm" [routerLink]="['/login']">Sign In</button>
   </div>
+  } @else {
+  <div>
+    <button class="btn btn-red-sm" (click)="signOut()">Sign Out</button>
+  </div>
+  }
 </nav>
