@@ -7,20 +7,6 @@ import { MovieTrailer } from '../interfaces/movie.trailer.interface';
 import { MovieCredits } from '../interfaces/movie.credits.interface';
 import { MovieImages } from '../interfaces/movie.images.interface';
 
-// const options = {
-//   params: {
-//     language: 'en-US',
-//     sort_by: 'popularity.desc',
-//     include_adult: false,
-//     include_video: true,
-//   },
-// headers: {
-//   accept: 'application/json',
-//   Authorization:
-//     'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OTY5YWVkN2Q1MDk2MWVhZDBhNzAwNiIsInVzZXJuYW1lIjoidGVzdDEiLCJlbWFpbCI6InRlc3R1c2VyMUBleGFtcGxlLmNvbSIsImlhdCI6MTcyMTIzMjkyMiwiZXhwIjoxNzIxMzE5MzIyfQ.D3NM-gqRHqr2PQ-50LhCAFT-J6ZZ6tpMq_gPYHFQ9H2-9oKSmbH2oB--yHV7_V1dNTt1nkB4UNt0BIGDOsLRu4Gzmuam9WXd_66_cB8ovdn-lgAWfYILRR4fYATHJnX1kUGQl-Z0oPOaGiHr_bjmhUw3T9e37wiD3rCzayaPyIr6g7lLaPypqpb3weu2we9f4s9T7odLnxngFWLS5ezLlhB7DsHKdzpVd46nQC3cKqSUu3C8MEJc1ZBr3vu3ogeKVgRVB71unmIbjJLEeS_SaNjPa1cYTPgK-4MpMk9nM_mbemAXddyOD8yN8BIOaW_114OC-2BYc45WnU4sFilFuB1CbEUMr3cPRkmwbh7tFVXum99KLsks22Bj5CMMlwgTXR4rggnmQduazAtWvw0n9ii9IYQ4iNXM68txe9Mmpv1pj0Tz9QknA4mDW0yg6vHTwODS3DN3w3THJigtA_pa2qIkulJo4OHLGQHPjPJMuTT1wgeB5anh9V-9GbdbtNeFK4WiXGdRdmPcUcMwrp54BgfkzCmKgnvdeeNOTa4q0avGoXi4mmFDfEUJmAKTsMtU_4WnCdMonQSkYE5V3aPpdCpv1twdjau3bPar-YKtLrLeG6k8p1F7e0Jgoxd3GFvUXxSNREVCaoUW8WQvT_P6W8ydwHRP7VB2ldq6uniAyd8',
-// },
-//};
-
 @Injectable({
   providedIn: 'root',
 })
